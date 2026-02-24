@@ -24,30 +24,26 @@ public class Main {
         return largest-smallest;
     }
     public static void finding_smalls(double[] arr){
-        double smallest=arr[0];
-        double secsmallest=arr[0];
+        double smallest=Double.MAX_VALUE;
+        double secsmallest=Double.MAX_VALUE;
         for(int i=0;i<arr.length;i++){
             if(smallest>arr[i]){
+                secsmallest=smallest;
                 smallest=arr[i];
             }
-        }
-        if(smallest==arr[0]){
-            secsmallest=arr[1];
-        }
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]==smallest){
-                continue;
-            }
-            else{
-                if(secsmallest>arr[i]){
-                    secsmallest=arr[i];
-                }
+            else if(secsmallest>arr[i] && arr[i]!=smallest){
+                secsmallest=arr[i];
             }
         }
+        if(secsmallest==Double.MAX_VALUE){
+            System.out.println("Small and second small are the same.");
+            secsmallest=smallest;
+        }
+
         System.out.println(smallest);
         System.out.println(secsmallest);
     }
     public static void expression(double x,double y){
-        System.out.println(x*x+(4*y/5-x)*(4*y/5-x));
+        System.out.println(Math.pow(x,2)+Math.pow((4*y/5-x),2));
     }
 }
